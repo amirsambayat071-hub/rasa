@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171126">
+  <title>رَسا | ارتباط خریدار و تأمین‌کننده</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap');
+    :root{--bg:#100d19;--panel:#1b1727;--panel2:#241e33;--line:#383047;--text:#f8f5ff;--muted:#b8aec9;--pink:#ff6b83;--lime:#c7f36b;--purple:#a78bfa}
+    *{box-sizing:border-box} body{margin:0;background:radial-gradient(ellipse at 80% 0%,#382447 0,transparent 42%),var(--bg);color:var(--text);font-family:Vazirmatn,Tahoma,sans-serif;min-height:100vh}
+    button,input,textarea,select{font:inherit} button{cursor:pointer}
+    .wrap{width:min(1100px,92%);margin:auto}.top{display:flex;justify-content:space-between;align-items:center;padding:25px 0}
+    .brand{font-size:27px;font-weight:800;letter-spacing:-1px}.brand span{color:var(--lime)} .tag{color:var(--muted);font-size:13px}
+    .admin-link{background:transparent;border:1px solid var(--line);color:var(--muted);padding:9px 14px;border-radius:12px}
+    .hero{padding:60px 0 38px;text-align:center}.eyebrow{color:var(--lime);font-size:13px;font-weight:700;letter-spacing:1px}
+    h1{font-size:clamp(30px,6vw,54px);line-height:1.35;margin:14px 0}.hero p{color:var(--muted);max-width:620px;margin:0 auto;line-height:2}
+    .choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin:35px auto 60px;max-width:850px}
+    .choice{background:linear-gradient(145deg,#282138,#1a1625);border:1px solid var(--line);border-radius:22px;padding:30px;text-align:right;transition:.2s;min-height:210px}
+    .choice:hover{transform:translateY(-4px);border-color:var(--purple)}.choice .icon{font-size:30px}.choice h2{margin:15px 0 8px;font-size:22px}.choice p{color:var(--muted);line-height:1.9;margin:0 0 20px;font-size:14px}
+    .btn{border:0;border-radius:12px;padding:12px 18px;font-weight:700;background:var(--lime);color:#171b0d}.btn.secondary{background:var(--pink);color:#2b1017}.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--text)}
+    .section{display:none;max-width:780px;margin:0 auto 70px;background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:clamp(18px,4vw,34px)}
+    .section.active{display:block}.section h2{margin:0 0 8px}.sub{color:var(--muted);font-size:14px;line-height:1.8;margin:0 0 24px}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}
+    label{font-size:13px;color:#ded6ed}input,textarea,select{width:100%;border:1px solid var(--line);background:#110e19;color:var(--text);border-radius:11px;padding:12px;outline:none}
+    input:focus,textarea:focus,select:focus{border-color:var(--purple)}textarea{min-height:105px;resize:vertical}.actions{display:flex;gap:10px;align-items:center;margin-top:20px;flex-wrap:wrap}
+    .notice{display:none;margin-top:15px;padding:12px;border-radius:10px;background:#25351f;color:var(--lime);font-size:14px}.notice.error{background:#421f2a;color:#ffb4c0}
+    .foot{text-align:center;color:#827991;font-size:12px;padding:20px 0 35px}
+    .admin-panel{display:none;margin:25px auto 70px}.admin-panel.active{display:block}.admin-toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+    .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0}.tab{border:1px solid var(--line);background:transparent;color:var(--text);border-radius:10px;padding:9px 13px}.tab.active{background:var(--purple);color:#170f25}
+    .records{display:grid;gap:12px}.record{background:#14111e;border:1px solid var(--line);border-radius:14px;padding:15px}.record h3{margin:0 0 8px}.record p{margin:5px 0;color:var(--muted);font-size:13px;line-height:1.8}.record .actions{margin-top:12px}
+    .small{font-size:12px;color:var(--muted)}.hidden{display:none!important}
+    @media(max-width:650px){.choices{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.hero{padding-top:35px}.choice{min-height:0}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <div><div class="brand">رَسا<span>.</span></div><div class="tag">پل ارتباطی خریداران و تأمین‌کنندگان</div></div>
+      <button class="admin-link" id="adminOpen">ورود مدیر</button>
+    </header>
+
+    <main id="publicView">
+      <section class="hero">
+        <div class="eyebrow">بازار ارتباطات تجاری</div>
+        <h1>برای خرید آمده‌اید یا<br>تأمین محصول؟</h1>
+        <p>رَسا درخواست خریداران را به تأمین‌کنندگان مرتبط می‌کند. اطلاعاتتان را ثبت کنید تا پس از بررسی، برای هماهنگی با شما تماس بگیریم.</p>
+      </section>
+
+      <section class="choices">
+        <article class="choice">
+          <div class="icon">🏭</div><h2>تأمین‌کننده هستم</h2>
+          <p>برند، محصولات و توان تأمین خود را معرفی کنید تا خریداران بتوانند شما را پیدا کنند.</p>
+          <button class="btn" data-open="supplierForm">معرفی کسب‌وکار</button>
+        </article>
+        <article class="choice">
+          <div class="icon">🛒</div><h2>خریدار هستم</h2>
+          <p>محصول موردنیاز، مقدار و شرایط خریدتان را ثبت کنید تا تأمین‌کننده مناسب پیدا شود.</p>
+          <button class="btn secondary" data-open="buyerForm">ثبت درخواست خرید</button>
+        </article>
+      </section>
+
+      <section class="section" id="supplierForm">
+        <h2>معرفی تأمین‌کننده</h2><p class="sub">اطلاعات واقعی و قابل پیگیری وارد کنید. موارد ستاره‌دار الزامی‌اند.</p>
+        <form id="supplierFormEl">
+          <div class="grid">
+            <div class="field"><label>نام برند *</label><input name="brand" required maxlength="100"></div>
+            <div class="field"><label>نام شرکت یا مجموعه</label><input name="company" maxlength="120"></div>
+            <div class="field"><label>نام محصول اصلی *</label><input name="product" required maxlength="120"></div>
+            <div class="field"><label>دسته‌بندی *</label><select name="category" required><option value="">انتخاب کنید</option><option>مواد غذایی</option><option>ادویه و خشکبار</option><option>پوشاک</option><option>لوازم خانه</option><option>قطعات و تجهیزات</option><option>مواد اولیه</option><option>سایر</option></select></div>
+            <div class="field"><label>قیمت یا محدوده قیمت</label><input name="price" placeholder="مثلاً توافقی یا قیمت هر کیلو"></div>
+            <div class="field"><label>حداقل میزان سفارش</label><input name="minimum" placeholder="مثلاً ۵۰ کیلوگرم"></div>
+            <div class="field"><label>شهر *</label><input name="city" required maxlength="80"></div>
+            <div class="field"><label>شماره تماس *</label><input name="phone" required type="tel" maxlength="30"></div>
+            <div class="field full"><label>مشخصات و توضیحات محصول *</label><textarea name="description" required maxlength="2000" placeholder="کیفیت، بسته‌بندی، ظرفیت تأمین و سایر مشخصات..."></textarea></div>
+          </div>
+          <div class="actions"><button class="btn" type="submit">ارسال اطلاعات برای بررسی</button><button class="btn ghost" type="button" data-close>بازگشت</button></div>
+          <div class="notice" id="supplierNotice" role="status"></div>
+        </form>
+      </section>
+
+      <section class="section" id="buyerForm">
+        <h2>ثبت درخواست خرید</h2><p class="sub">نیازتان را دقیق بنویسید تا بتوانیم تأمین‌کننده مناسب را پیدا کنیم.</p>
+        <form id="buyerFormEl">
+          <div class="grid">
+            <div class="field"><label>نام خریدار یا شرکت *</label><input name="buyer_name" required maxlength="120"></div>
+            <div class="field"><label>محصول موردنیاز *</label><input name="product" required maxlength="120"></div>
+            <div class="field"><label>مقدار موردنیاز *</label><input name="quantity" required maxlength="100" placeholder="مثلاً ۲۰۰ کیلوگرم"></div>
+            <div class="field"><label>شهر *</label><input name="city" required maxlength="80"></div>
+            <div class="field"><label>شماره تماس *</label><input name="phone" required type="tel" maxlength="30"></div>
+            <div class="field"><label>بودجه یا محدوده قیمت</label><input name="budget" maxlength="120"></div>
+            <div class="field full"><label>مشخصات و توضیحات تکمیلی</label><textarea name="details" maxlength="2000"></textarea></div>
+          </div>
+          <div class="actions"><button class="btn secondary" type="submit">ارسال درخواست خرید</button><button class="btn ghost" type="button" data-close>بازگشت</button></div>
+          <div class="notice" id="buyerNotice" role="status"></div>
+        </form>
+      </section>
+    </main>
+
+    <section class="section" id="adminLogin">
+      <h2>ورود مدیر رَسا</h2><p class="sub">این بخش برای مدیریت درخواست‌ها و اطلاعات تأمین‌کنندگان است.</p>
+      <form id="loginForm">
+        <div class="grid">
+          <div class="field"><label>ایمیل مدیر</label><input name="email" type="email" required></div>
+          <div class="field"><label>رمز عبور</label><input name="password" type="password" required></div>
+        </div>
+        <div class="actions"><button class="btn" type="submit">ورود به پنل</button><button class="btn ghost" type="button" id="backPublic">بازگشت</button></div>
+        <div class="notice" id="loginNotice" role="status"></div>
+      </form>
+    </section>
+
+    <section class="admin-panel" id="adminPanel">
+      <div class="admin-toolbar"><div><h2>پنل مدیریت رَسا</h2><div class="small">درخواست‌ها و معرفی‌های ثبت‌شده</div></div><button class="btn ghost" id="logout">خروج</button></div>
+      <div class="tabs">
+        <button class="tab active" data-tab="suppliers">تأمین‌کنندگان</button>
+        <button class="tab" data-tab="buyers">درخواست‌های خرید</button>
+      </div>
+      <div class="records" id="records"></div>
+      <div class="notice" id="adminNotice"></div>
+    </section>
+    <footer class="foot">رَسا | اطلاعات ارسالی پس از بررسی مدیر پیگیری می‌شوند.</footer>
+  </div>
+
+  <script>
+    // UI controls work independently of Supabase. The database library is
+    // loaded only when a form is submitted or the admin tries to sign in.
+    const SUPABASE_URL = "YOUR_SUPABASE_URL";
+    const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
+    const configured = !SUPABASE_URL.includes("YOUR_") && !SUPABASE_ANON_KEY.includes("YOUR_");
+
+    let dbPromise = null;
+    function getDb() {
+      if (!configured) {
+        throw new Error("ابتدا آدرس و کلید عمومی Supabase را در تنظیمات کد وارد کن.");
+      }
+      if (!dbPromise) {
+        dbPromise = import("https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm")
+          .then(({ createClient }) => createClient(SUPABASE_URL, SUPABASE_ANON_KEY))
+          .catch((err) => {
+            dbPromise = null;
+            throw new Error("کتابخانه اتصال بارگذاری نشد. فایل را با Safari یا Chrome و اینترنت باز کن. جزئیات: " + err.message);
+          });
+      }
+      return dbPromise;
+    }
+
+    const $ = (id) => document.getElementById(id);
+    const showNotice = (el, message, error=false) => {
+      el.textContent = message;
+      el.classList.toggle("error", error);
+      el.style.display = "block";
+    };
+    const formObject = (form) => Object.fromEntries(new FormData(form).entries());
+
+    function openSection(id) {
+      document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
+      $("adminPanel").classList.remove("active");
+      $(id).classList.add("active");
+      $(id).scrollIntoView({behavior:"smooth",block:"start"});
+    }
+
+    // These navigation buttons do not need a database connection.
+    document.querySelectorAll("[data-open]").forEach(b =>
+      b.addEventListener("click", () => openSection(b.dataset.open))
+    );
+    document.querySelectorAll("[data-close]").forEach(b =>
+      b.addEventListener("click", () => {
+        b.closest(".section").classList.remove("active");
+        window.scrollTo({top:0,behavior:"smooth"});
+      })
+    );
+
+    $("supplierFormEl").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const notice = $("supplierNotice");
+      try {
+        const db = await getDb();
+        const f = formObject(e.currentTarget);
+        const payload = {
+          brand:f.brand.trim(), company:f.company.trim(), product:f.product.trim(),
+          category:f.category, price:f.price.trim(), minimum_order:f.minimum.trim(),
+          city:f.city.trim(), phone:f.phone.trim(), description:f.description.trim()
+        };
+        const {error} = await db.from("supplier_submissions").insert(payload);
+        if (error) throw error;
+        e.currentTarget.reset();
+        showNotice(notice, "اطلاعات با موفقیت ارسال شد و پس از بررسی پیگیری می‌شود.");
+      } catch(err) {
+        showNotice(notice, err.message || "ارسال اطلاعات ناموفق بود.", true);
+      }
+    });
+
+    $("buyerFormEl").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const notice = $("buyerNotice");
+      try {
+        const db = await getDb();
+        const f = formObject(e.currentTarget);
+        const payload = {
+          buyer_name:f.buyer_name.trim(), product:f.product.trim(), quantity:f.quantity.trim(),
+          city:f.city.trim(), phone:f.phone.trim(), budget:f.budget.trim(), details:f.details.trim()
+        };
+        const {error} = await db.from("buyer_requests").insert(payload);
+        if (error) throw error;
+        e.currentTarget.reset();
+        showNotice(notice, "درخواست خرید ثبت شد. پس از بررسی با شما تماس گرفته می‌شود.");
+      } catch(err) {
+        showNotice(notice, err.message || "ثبت درخواست ناموفق بود.", true);
+      }
+    });
+
+    $("adminOpen").addEventListener("click", () => openSection("adminLogin"));
+    $("backPublic").addEventListener("click", () => {
+      $("adminLogin").classList.remove("active");
+      window.scrollTo({top:0,behavior:"smooth"});
+    });
+
+    let activeTab = "suppliers";
+    $("loginForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const notice = $("loginNotice");
+      try {
+        const db = await getDb();
+        const f = formObject(e.currentTarget);
+        const {data,error} = await db.auth.signInWithPassword({email:f.email,password:f.password});
+        if (error) throw error;
+        const {data:admin,error:adminError} = await db.from("admin_users")
+          .select("user_id").eq("user_id",data.user.id).maybeSingle();
+        if (adminError) throw adminError;
+        if (!admin) {
+          await db.auth.signOut();
+          throw new Error("این حساب دسترسی مدیر ندارد.");
+        }
+        $("adminLogin").classList.remove("active");
+        $("publicView").classList.add("hidden");
+        $("adminPanel").classList.add("active");
+        await loadRecords();
+      } catch(err) {
+        showNotice(notice, err.message || "ورود ناموفق بود.", true);
+      }
+    });
+
+    async function loadRecords() {
+      const box = $("records");
+      box.innerHTML = "<p class='small'>در حال دریافت اطلاعات...</p>";
+      try {
+        const db = await getDb();
+        const table = activeTab === "suppliers" ? "supplier_submissions" : "buyer_requests";
+        const {data,error} = await db.from(table).select("*").order("created_at",{ascending:false});
+        if (error) throw error;
+        box.innerHTML = "";
+        if (!data.length) {
+          box.innerHTML = "<p class='small'>هنوز موردی ثبت نشده است.</p>";
+          return;
+        }
+        data.forEach(row => {
+          const card = document.createElement("article");
+          card.className = "record";
+          const title = activeTab === "suppliers" ? `${row.brand} | ${row.product}` : `${row.buyer_name} | ${row.product}`;
+          const h = document.createElement("h3");
+          h.textContent = title;
+          card.appendChild(h);
+          const details = activeTab === "suppliers"
+            ? [["شرکت",row.company],["دسته‌بندی",row.category],["شهر",row.city],["تماس",row.phone],["قیمت",row.price],["حداقل سفارش",row.minimum_order],["توضیحات",row.description]]
+            : [["مقدار",row.quantity],["شهر",row.city],["تماس",row.phone],["بودجه",row.budget],["توضیحات",row.details]];
+          details.forEach(([k,v]) => {
+            if (v) {
+              const p = document.createElement("p");
+              p.textContent = `${k}: ${v}`;
+              card.appendChild(p);
+            }
+          });
+          const p = document.createElement("p");
+          p.textContent = `وضعیت: ${row.status || "جدید"} | ثبت: ${new Date(row.created_at).toLocaleString("fa-IR")}`;
+          card.appendChild(p);
+          const actions = document.createElement("div");
+          actions.className = "actions";
+          const done = document.createElement("button");
+          done.className = "btn";
+          done.textContent = "علامت‌گذاری به‌عنوان بررسی‌شده";
+          done.addEventListener("click", () => updateStatus(table,row.id));
+          const del = document.createElement("button");
+          del.className = "btn ghost";
+          del.textContent = "حذف";
+          del.addEventListener("click", () => deleteRecord(table,row.id));
+          actions.append(done,del);
+          card.appendChild(actions);
+          box.appendChild(card);
+        });
+      } catch(err) {
+        box.textContent = err.message || "خطا در دریافت اطلاعات";
+      }
+    }
+
+    async function updateStatus(table,id) {
+      try {
+        const db = await getDb();
+        const {error} = await db.from(table).update({status:"reviewed"}).eq("id",id);
+        if(error) throw error;
+        showNotice($("adminNotice"),"وضعیت به‌روزرسانی شد.");
+        await loadRecords();
+      } catch(err) { showNotice($("adminNotice"),err.message,true); }
+    }
+
+    async function deleteRecord(table,id) {
+      if(!confirm("این مورد حذف شود؟")) return;
+      try {
+        const db = await getDb();
+        const {error} = await db.from(table).delete().eq("id",id);
+        if(error) throw error;
+        showNotice($("adminNotice"),"مورد حذف شد.");
+        await loadRecords();
+      } catch(err) { showNotice($("adminNotice"),err.message,true); }
+    }
+
+    document.querySelectorAll("[data-tab]").forEach(b => b.addEventListener("click", () => {
+      document.querySelectorAll("[data-tab]").forEach(x=>x.classList.remove("active"));
+      b.classList.add("active");
+      activeTab=b.dataset.tab;
+      loadRecords();
+    }));
+
+    $("logout").addEventListener("click", async () => {
+      try {
+        const db = await getDb();
+        await db.auth.signOut();
+      } catch(err) {
+        showNotice($("adminNotice"),err.message,true);
+      }
+      $("adminPanel").classList.remove("active");
+      $("publicView").classList.remove("hidden");
+      window.scrollTo({top:0,behavior:"smooth"});
+    });
+  </script>
+</body>
+</html>
